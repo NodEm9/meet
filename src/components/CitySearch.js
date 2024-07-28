@@ -6,11 +6,11 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
   const [suggestions, setSuggestions] = useState([]);
 
   const handleItemClicked = (event) => {
-    const value = event.target.textContent; 
+    const value = event.target.textContent;
     setQuery(value);
-    setShowSuggestions(false); // to hide the suggestions list
-    setCurrentCity(value); // to update the city search in the parent component
-  };
+    setShowSuggestions(false);
+    setCurrentCity(value);
+  }; 
 
   const handleInputChanged = (event) => {
     const value = event.target.value;
@@ -22,7 +22,7 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
     setSuggestions(filteredLocations);
   };
 
-  useEffect(() => { 
+  useEffect(() => {
     setSuggestions(allLocations);
   }, [`${allLocations}`]);
  

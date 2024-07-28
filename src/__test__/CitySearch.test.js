@@ -8,7 +8,7 @@ import CitySearch from "../components/CitySearch";
 import { extractLocations, getEvents } from "../api";
 import App from "../App";
 
-describe('<CitySearch /> component', () => {
+describe('<CitySearch /> component', () => { 
   let CitySearchComponent;
   beforeEach(() => {
     CitySearchComponent = render(<CitySearch allLocations={[]} />);
