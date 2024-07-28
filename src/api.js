@@ -15,6 +15,35 @@ export const extractLocations = (events) => {
   return locations;
 }; 
 
+const checkToken = async (accessToken) => {
+  const response = await fetch(
+    `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
+  );
+  const result = await response.json();
+  return result;
+};
+
+export const getEvents = async () => {
+  if (window.location.href.startsWith("http://localhost")) {
+    return mockData;
+  }
+
+  const token = await getAccessToken();
+
+  if (token) {
+    removeQuery();
+    // eslint-disable-next-line no-useless-concat
+    const url = "https://ms8edqfzoi.execute-api.eu-central-1.amazonaws.com/dev/api/get-events" + "/" + token;
+    const response = await fetch(url)
+    const result = await response.json();
+    if (result) {
+      return result.events;
+    } else {
+      return console.log("No events found"); 
+    }
+  }
+}; 
+
 export const getAccessToken = async () => {             
   const accessToken = localStorage.getItem("access_token");
   const tokenCheck = accessToken && (await checkToken(accessToken));
@@ -37,20 +66,29 @@ export const getAccessToken = async () => {
 };
 
 
-const checkToken = async (accessToken) => {
-  const response = await fetch(
-    `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
-  );
-  const result = await response.json();
-  return result;
+const removeQuery = () => {
+  let newurl;
+  if (window.history.pushState && window.location.pathname) {
+    newurl =
+      window.location.protocol +
+      "//" +
+      window.location.host +
+      window.location.pathname;
+    window.history.pushState("", "", newurl);
+  } else {
+    newurl = window.location.protocol + "//" + window.location.host;
+    window.history.pushState("", "", newurl);
+  }
 };
+
+
  
 const getToken = async (code) => {
   try {
     const encodeCode = encodeURIComponent(code);
  
     // eslint-disable-next-line no-useless-concat
-    const response = await fetch("https://ms8edqfzoi.execute-api.eu-central-1.amazonaws.com/dev/api/token/" + encodeCode);
+    const response = await fetch("https://ms8edqfzoi.execute-api.eu-central-1.amazonaws.com/dev/api/token" + "/" + encodeCode);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)
     }
@@ -62,40 +100,6 @@ const getToken = async (code) => {
   }
  }
 
-export const getEvents = async () => {
-  if (window.location.href.startsWith("http://localhost")) {
-    return mockData;
-  }
 
-  const token = await getAccessToken();
-
-  const removeQuery = () => {
-    let newurl;
-    if (window.history.pushState && window.location.pathname) {
-      newurl =
-        window.location.protocol +
-        "//" +
-        window.location.host +
-        window.location.pathname;
-      window.history.pushState("", "", newurl);
-    } else {
-      newurl = window.location.protocol + "//" + window.location.host;
-      window.history.pushState("", "", newurl);
-    }
-  };
-
-  if (token) {
-    removeQuery();
-    // eslint-disable-next-line no-useless-concat
-    const url = "https://ms8edqfzoi.execute-api.eu-central-1.amazonaws.com/dev/api/get-events/" + token;
-    const response = await fetch(url)
-    const result = await response.json();
-    if (result) {
-      return result.events;
-    } else {
-      return console.log("No events found"); 
-    }
-  }
-}; 
 
 
