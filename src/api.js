@@ -50,7 +50,7 @@ const getToken = async (code) => {
     const encodeCode = encodeURIComponent(code);
  
     // eslint-disable-next-line no-useless-concat
-    const response = await fetch();
+    const response = await fetch("https://ms8edqfzoi.execute-api.eu-central-1.amazonaws.com/dev/api/token" + "/" + encodeCode);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)
     }
