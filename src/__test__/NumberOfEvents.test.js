@@ -4,10 +4,12 @@
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event"; // Add this line to import the 'userEvent' library
 import NumberOfEvents from "../components/NumberOfEvents";
+import { getEvents } from "../api";
 
 
 describe('<NumberOfEvents /> component', () => { 
   let NumberOfEventsComponent;
+
   beforeEach(() => {
     NumberOfEventsComponent = render(<NumberOfEvents />);
   });
@@ -29,5 +31,7 @@ describe('<NumberOfEvents /> component', () => {
     NumberOfEventsComponent.rerender(<NumberOfEvents />); 
     expect(numverOfEvents).toHaveValue('10');
   }); 
+
+ 
 });  
 

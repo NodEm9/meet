@@ -1,4 +1,5 @@
 import { useState } from "react"
+import PropTypes from 'prop-types'
 
 const NumberOfEvents = ({ setCurrentNOE }) => {
   const [number, setNumber] = useState(32)
@@ -6,6 +7,7 @@ const NumberOfEvents = ({ setCurrentNOE }) => {
 
   const handleInputChanged = (e) => { 
     const value = e.target.value
+    console.log('value', value) 
 
     if (e.target.value === '') {
       setNumber(0)
@@ -13,8 +15,8 @@ const NumberOfEvents = ({ setCurrentNOE }) => {
       setNumber(e.target.value)
     } 
 
-    setNumber(value)
-    setCurrentNOE(value)
+    return [setCurrentNOE, setNumber(value)]
+    // setCurrentNOE(value)
   }
  
   return ( 
@@ -23,11 +25,15 @@ const NumberOfEvents = ({ setCurrentNOE }) => {
       <input
         type="text"
         className="number" 
-        value={number}
+        value={(number === 0) ? '' : number} 
         onChange={handleInputChanged}
-      />
+      /> 
     </div> 
   )
 }
 
 export default NumberOfEvents 
+
+NumberOfEvents.propTypes = {
+  setCurrentNOE: PropTypes.func.isRequired
+}

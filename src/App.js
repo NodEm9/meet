@@ -14,7 +14,7 @@ const App = () => {
 
  
   const fetchData = async () => {
-    const allEvents = await getEvents();
+    const allEvents = await getEvents(); 
     const filteredEvents = currentCity === "See all cities" ?
       allEvents : allEvents.filter(event => event.location === currentCity)
     setEvents(filteredEvents.slice(0, currentNOE));
