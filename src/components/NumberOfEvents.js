@@ -8,15 +8,8 @@ const NumberOfEvents = ({ setCurrentNOE }) => {
   const handleInputChanged = (e) => { 
     const value = e.target.value
     console.log('value', value) 
-
-    if (e.target.value === '') {
-      setNumber(0)
-    } else {
-      setNumber(e.target.value)
-    } 
-
-    return [setCurrentNOE, setNumber(value)]
-    // setCurrentNOE(value)
+    setCurrentNOE = value;
+    setNumber(value)
   }
  
   return ( 
@@ -25,7 +18,7 @@ const NumberOfEvents = ({ setCurrentNOE }) => {
       <input
         type="text"
         className="number" 
-        value={(number === 0) ? '' : number} 
+        value={number ? number : setCurrentNOE} 
         onChange={handleInputChanged}
       /> 
     </div> 
