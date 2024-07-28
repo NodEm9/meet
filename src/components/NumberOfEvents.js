@@ -1,19 +1,20 @@
 import { useState } from "react"
 
-const NumberOfEvents = () => {
+const NumberOfEvents = ({ setCurrentNOE }) => {
   const [number, setNumber] = useState(32)
-  const [newValue, setNewValue] = useState('')
-  const [isChanged, setIsChanged] = useState(false)
+
 
   const handleInputChanged = (e) => { 
-    setNewValue(e.target.value)
-    setIsChanged(true)   
+    const value = e.target.value
 
     if (e.target.value === '') {
       setNumber(0)
     } else {
       setNumber(e.target.value)
     } 
+
+    setNumber(value)
+    setCurrentNOE(value)
   }
  
   return ( 
@@ -22,7 +23,7 @@ const NumberOfEvents = () => {
       <input
         type="text"
         className="number" 
-        value={isChanged ? newValue : number}
+        value={number}
         onChange={handleInputChanged}
       />
     </div> 
