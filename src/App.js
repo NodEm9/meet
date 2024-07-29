@@ -18,15 +18,15 @@ const App = () => {
   }, [currentCity, currentNOE]);
 
   const fetchData = async () => {
-    let allEvents = await getEvents();
-    allEvents = currentCity === "See all cities" ?
+    const allEvents = await getEvents();
+    const filteredEvents = currentCity === "See all cities" ?
       allEvents
       : allEvents.filter(event => event.location === currentCity);
-    setEvents(allEvents.slice(0, currentNOE));
-    setAllLocations(extractLocations(allEvents));
+    setEvents(filteredEvents.slice(0, currentNOE)); 
+    setAllLocations(extractLocations(allEvents)); 
   };
 
-
+ 
   return (
     <div className="App">
       <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} />
