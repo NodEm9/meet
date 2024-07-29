@@ -50,7 +50,7 @@ const getToken = async (code) => {
     const encodeCode = encodeURIComponent(code);
  
     // eslint-disable-next-line no-useless-concat
-    const response = await fetch("https://ms8edqfzoi.execute-api.eu-central-1.amazonaws.com/dev/api/token/" + encodeCode);
+    const response = await fetch("https://ms8edqfzoi.execute-api.eu-central-1.amazonaws.com/dev/api/token" + "/" + encodeCode);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)
     }
@@ -63,7 +63,7 @@ const getToken = async (code) => {
 }; 
 
 
-export const getEvents = async () => {
+const getEvents = async () => {
   if (window.location.href.startsWith("http://localhost")) {
     return mockData;
   }
@@ -72,15 +72,12 @@ export const getEvents = async () => {
 
   if (token) {
     removeQuery();
-    // eslint-disable-next-line no-useless-concat
-    const url = "https://ms8edqfzoi.execute-api.eu-central-1.amazonaws.com/dev/api/get-events/" + token;
-    const response = await fetch(url)
+    const url =  "YOUR_GET_EVENTS_API_ENDPOINT" + "/" + token;
+    const response = await fetch(url);
     const result = await response.json();
     if (result) {
       return result.events;
-    } else {
-      return console.log("No events found"); 
-    }
+    } else return null; 
   }
 }; 
 
@@ -100,7 +97,7 @@ const removeQuery = () => {
 };
 
 
- 
+ export default getEvents;
 
 
 
