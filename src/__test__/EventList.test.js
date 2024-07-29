@@ -5,7 +5,7 @@
 /* eslint-disable testing-library/prefer-screen-queries */
 import { render, within, waitFor } from "@testing-library/react";
 import EventList from "../components/EventList";
-import getEvents  from "../api";
+import { getEvents } from "../api";
 import App from "../App";
 
 describe("<EventList /> component", () => {

@@ -63,7 +63,7 @@ const getToken = async (code) => {
 }; 
 
 
-const getEvents = async () => {
+export const getEvents = async () => {
   if (window.location.href.startsWith("http://localhost")) {
     return mockData;
   }
@@ -97,7 +97,7 @@ const removeQuery = () => {
 };
 
 
- export default getEvents;
+
 
 
 
