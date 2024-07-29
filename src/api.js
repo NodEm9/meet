@@ -60,7 +60,7 @@ const getToken = async (code) => {
   } catch (error) {
     return error;
   }
-};
+}; 
 
 
 export const getEvents = async () => {

@@ -2,13 +2,13 @@ import { useState } from "react"
 import PropTypes from 'prop-types'
 
 const NumberOfEvents = ({ setCurrentNOE }) => {
-  const [number, setNumber] = useState(32)
+  const [number, setNumber] = useState('32')
 
 
   const handleInputChanged = (e) => { 
     const value = e.target.value
     console.log('value', value) 
-    setCurrentNOE = value;
+    setCurrentNOE(value);
     setNumber(value)
   }
  

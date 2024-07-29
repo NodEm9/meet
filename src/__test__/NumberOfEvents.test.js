@@ -4,13 +4,13 @@
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event"; // Add this line to import the 'userEvent' library
 import NumberOfEvents from "../components/NumberOfEvents";
-import { extractLocations, getEvents } from "../api";
+import { getEvents } from "../api";
 
 
 describe('<NumberOfEvents /> component', () => { 
   let NumberOfEventsComponent;
   beforeEach(() => {
-    NumberOfEventsComponent = render(<NumberOfEvents />);
+    NumberOfEventsComponent = render(<NumberOfEvents setCurrentNOE={() => {}} />);
   });
 
   test('render element with role of textbox', () => { 
@@ -27,9 +27,9 @@ describe('<NumberOfEvents /> component', () => {
     const numverOfEvents = NumberOfEventsComponent.getByRole('textbox');
     const user = userEvent.setup(); 
     await user.type(numverOfEvents, '{backspace}{backspace}10');   
-    const allEvents = await getEvents();
+    const allEvents = await getEvents(); 
     NumberOfEventsComponent.rerender(<NumberOfEvents setCurrentNOE={allEvents} />);  
-    expect(numverOfEvents).toHaveValue('10');
+    expect(numverOfEvents).toHaveValue('10'); 
   }); 
 });  
  
