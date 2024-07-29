@@ -10,7 +10,7 @@ const App = () => {
   const [events, setEvents] = useState([]);
   const [currentNOE, setCurrentNOE] = useState(32);
   const [allLocations, setAllLocations] = useState([]);
-  const [currentCity, setCurrentCity] = useState("See all cities",);
+  const [currentCity, setCurrentCity] = useState("See all cities");
 
  
   const fetchData = async () => { 
