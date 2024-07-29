@@ -23,9 +23,9 @@ const App = () => {
       ? await allEvents
       : allEvents.filter(event => event.location === currentCity)
     console.log(filteredEvents);
-    setEvents([...filteredEvents].slice(0, currentNOE));
+    setEvents(Array.from(filteredEvents).slice(0, currentNOE));
     setAllLocations(extractLocations(allEvents));
-    console.log(allEvents);
+    console.log(allEvents); 
   };
 
 
