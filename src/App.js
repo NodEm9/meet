@@ -24,8 +24,10 @@ const App = () => {
       : allEvents.filter(event => event.location === currentCity);
 
     Array.isArray(filteredEvents) && filteredEvents.length > 0
-      ? setEvents(filteredEvents.slice(0, currentNOE))
+      ? setEvents(filteredEvents.entries(event => event.location))
       : setEvents([]);
+    
+      setEvents(filteredEvents.slice(0, currentNOE));
       setAllLocations(extractLocations(allEvents));
   };
 
