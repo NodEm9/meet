@@ -18,18 +18,12 @@ const App = () => {
   }, [currentCity, currentNOE]);
 
   const fetchData = async () => {
-    const allEvents = await getEvents();
-    const filteredEvents = currentCity === "See all cities" ?
+    let allEvents = await getEvents();
+    allEvents = currentCity === "See all cities" ?
       allEvents
       : allEvents.filter(event => event.location === currentCity);
-
-    Array.isArray(filteredEvents) && filteredEvents.length > 0
-      ? setEvents(filteredEvents.entries(event => event.location)) && setEvents(filteredEvents.slice(0, currentNOE))
-      : setEvents([]);
-    
-  
+    setEvents(allEvents.slice(0, currentNOE));
     setAllLocations(extractLocations(allEvents));
-    setEvents(currentCity === "See all cities" ? allEvents.slice(0, currentNOE) : filteredEvents.slice(0, currentNOE)); 
   };
 
 
