@@ -25,7 +25,7 @@ const App = () => {
     
     Array.isArray(filteredEvents) && filteredEvents.length > 0
       ? setEvents(filteredEvents.slice(0, currentNOE))
-      : setEvents(allEvents.slice(0, currentNOE)); 
+      : setEvents(allEvents); 
 
     setAllLocations(extractLocations(allEvents));
   };
