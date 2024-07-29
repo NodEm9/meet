@@ -23,26 +23,6 @@ const checkToken = async (accessToken) => {
   return result;
 };
 
-export const getEvents = async () => {
-  if (window.location.href.startsWith("http://localhost")) {
-    return mockData;
-  }
-
-  const token = await getAccessToken();
-
-  if (token) {
-    removeQuery();
-    // eslint-disable-next-line no-useless-concat
-    const url = "https://ms8edqfzoi.execute-api.eu-central-1.amazonaws.com/dev/api/get-events/" + token;
-    const response = await fetch(url)
-    const result = await response.json();
-    if (result) {
-      return result.events;
-    } else {
-      return console.log("No events found"); 
-    }
-  }
-}; 
 
 export const getAccessToken = async () => {             
   const accessToken = localStorage.getItem("access_token");
@@ -65,6 +45,44 @@ export const getAccessToken = async () => {
   return accessToken;
 };
 
+const getToken = async (code) => {
+  try {
+    const encodeCode = encodeURIComponent(code);
+ 
+    // eslint-disable-next-line no-useless-concat
+    const response = await fetch("https://ms8edqfzoi.execute-api.eu-central-1.amazonaws.com/dev/api/token/" + encodeCode);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+    const { access_token } = await response.json();
+    access_token && localStorage.setItem("access_token", access_token);
+    return access_token;
+  } catch (error) {
+    return error;
+  }
+};
+
+
+export const getEvents = async () => {
+  if (window.location.href.startsWith("http://localhost")) {
+    return mockData;
+  }
+
+  const token = await getAccessToken();
+
+  if (token) {
+    removeQuery();
+    // eslint-disable-next-line no-useless-concat
+    const url = "https://ms8edqfzoi.execute-api.eu-central-1.amazonaws.com/dev/api/get-events/" + token;
+    const response = await fetch(url)
+    const result = await response.json();
+    if (result) {
+      return result.events;
+    } else {
+      return console.log("No events found"); 
+    }
+  }
+}; 
 
 const removeQuery = () => {
   let newurl;
@@ -83,23 +101,6 @@ const removeQuery = () => {
 
 
  
-const getToken = async (code) => {
-  try {
-    const encodeCode = encodeURIComponent(code);
- 
-    // eslint-disable-next-line no-useless-concat
-    const response = await fetch("https://ms8edqfzoi.execute-api.eu-central-1.amazonaws.com/dev/api/token/" + encodeCode);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`)
-    }
-    const { access_token } = await response.json();
-    access_token && localStorage.setItem("access_token", access_token);
-    return access_token;
-  } catch (error) {
-    return error;
-  }
- }
-
 
 
 
