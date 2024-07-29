@@ -5,7 +5,7 @@ import NumberOfEvents from './components/NumberOfEvents';
 import { extractLocations, getEvents } from './api';
 
 
-import './App.css'; 
+import './App.css';
 
 const App = () => {
   const [events, setEvents] = useState([]);
@@ -16,25 +16,24 @@ const App = () => {
   useEffect(() => {
     fetchData();
   }, [currentCity, currentNOE]);
-   
+
   const fetchData = async () => {
-    const allEvents = await getEvents(); 
-    const filteredEvents =  currentCity === "See all cities" ?
+    const allEvents = await getEvents();
+    const filteredEvents = currentCity === "See all cities" ?
       allEvents
       : allEvents.filter(event => event.location === currentCity);
-    
+
     Array.isArray(filteredEvents) && filteredEvents.length > 0
       ? setEvents(filteredEvents.slice(0, currentNOE))
-      : setEvents(allEvents); 
-
-    setAllLocations(extractLocations(allEvents));
+      : setEvents([]);
+      setAllLocations(extractLocations(allEvents));
   };
 
 
   return (
     <div className="App">
       <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} />
-      <NumberOfEvents setCurrentNOE={setCurrentNOE}  />
+      <NumberOfEvents setCurrentNOE={setCurrentNOE} />
       <EventList events={events} />
     </div>
   );
