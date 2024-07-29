@@ -4,12 +4,11 @@
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event"; // Add this line to import the 'userEvent' library
 import NumberOfEvents from "../components/NumberOfEvents";
-import { getEvents } from "../api";
+import { extractLocations, getEvents } from "../api";
 
 
 describe('<NumberOfEvents /> component', () => { 
   let NumberOfEventsComponent;
-
   beforeEach(() => {
     NumberOfEventsComponent = render(<NumberOfEvents />);
   });
@@ -27,11 +26,10 @@ describe('<NumberOfEvents /> component', () => {
   test('change number of events when a user types in the textbox', async () => { 
     const numverOfEvents = NumberOfEventsComponent.getByRole('textbox');
     const user = userEvent.setup(); 
-    await user.type(numverOfEvents, '{backspace}{backspace}10');       
-    NumberOfEventsComponent.rerender(<NumberOfEvents />); 
+    await user.type(numverOfEvents, '{backspace}{backspace}10');   
+    const allEvents = await getEvents();
+    NumberOfEventsComponent.rerender(<NumberOfEvents setCurrentNOE={allEvents} />);  
     expect(numverOfEvents).toHaveValue('10');
   }); 
-
- 
 });  
-
+ 
