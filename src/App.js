@@ -24,11 +24,12 @@ const App = () => {
       : allEvents.filter(event => event.location === currentCity);
 
     Array.isArray(filteredEvents) && filteredEvents.length > 0
-      ? setEvents(filteredEvents.entries(event => event.location))
+      ? setEvents(filteredEvents.entries(event => event.location)) && setEvents(filteredEvents.slice(0, currentNOE))
       : setEvents([]);
     
-      setEvents(filteredEvents.slice(0, currentNOE));
-      setAllLocations(extractLocations(allEvents));
+  
+    setAllLocations(extractLocations(allEvents));
+    setEvents(currentCity === "See all cities" ? allEvents.slice(0, currentNOE) : filteredEvents.slice(0, currentNOE)); 
   };
 
 
