@@ -23,17 +23,16 @@ const App = () => {
       ? await allEvents
       : allEvents.filter(event => event.location === currentCity)
     console.log(filteredEvents);
-    setEvents(await filteredEvents.slice(0, currentNOE));
+    setEvents([...filteredEvents].slice(0, currentNOE));
     setAllLocations(extractLocations(allEvents));
     console.log(allEvents);
-  }
-
+  };
 
 
   return (
     <div className="App">
       <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} />
-      <NumberOfEvents setCurrentNOE={setCurrentNOE} />
+      <NumberOfEvents setCurrentNOE={setCurrentNOE}  />
       <EventList events={events} />
     </div>
   );
