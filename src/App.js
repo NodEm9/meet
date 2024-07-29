@@ -25,10 +25,14 @@ const App = () => {
       : allEvents.filter(event => event.location === currentCity);
     
     // filteredEvents.length = currentNOE;
-    eventsArray = filteredEvents.slice(0, currentNOE);
+    // eventsArray = filteredEvents.slice(0, currentNOE);
+    eventsArray.push(filteredEvents.slice(0, currentNOE)); 
+    eventsArray.slice(0, currentNOE);
+    eventsArray = eventsArray.flat();
+   
 
     eventsArray.sort((a, b) => {
-      return a.local_time > b.local_time ? 1 : -1;
+      return a.local_time > b.local_time ? 1 : -1; 
     });
 
     console.log(filteredEvents);
