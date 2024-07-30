@@ -17,6 +17,7 @@ As a user, I want to be able to manage and visualize event details easily. I wan
 ## Gherkin Syntax
 
 ```gherkin
+
 Feature: Filter Events By City
 
   Scenario 1: When user hasn’t searched for a city, show upcoming events from all cities
