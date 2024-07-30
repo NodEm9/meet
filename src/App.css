@@ -156,11 +156,20 @@ body {
 }
 
 @media screen and (max-width: 768px) {
+  .navigation{
+    padding: 0.7rem 0.7rem;
+  }
+  .navigation h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 1.4rem;
+  }
   #event-list {
     grid-template-columns: 1fr;
     width: auto;
     padding: 10px;
   }
+
   .event {
     grid-template-columns: 1fr;
     width: auto;
@@ -174,6 +183,6 @@ body {
     cursor: pointer;
     margin: 0 auto;
   }
-
+  
   
 }
