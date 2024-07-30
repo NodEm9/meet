@@ -154,3 +154,26 @@ body {
 .event .details {
   grid-column: span 2;
 }
+
+@media screen and (max-width: 768px) {
+  #event-list {
+    grid-template-columns: 1fr;
+    width: auto;
+    padding: 10px;
+  }
+  .event {
+    grid-template-columns: 1fr;
+    width: auto;
+    padding: 0.5rem 5rem;
+  }
+
+  .showDetailsButton {
+    width: auto;
+    height: 40px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    margin: 0 auto;
+  }
+
+  
+}
