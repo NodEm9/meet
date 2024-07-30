@@ -80,8 +80,10 @@ export const getEvents = async () => {
     const response = fetch(eventsURL)
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         if (!data.events) return [];
-        const result = data.events; 
+        const result = data.events;
+        console.log(result);
         return result;
       }
     ).catch((error) => { 

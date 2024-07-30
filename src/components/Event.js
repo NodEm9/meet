@@ -1,4 +1,5 @@
 import { useState } from "react"
+import PropTypes from 'prop-types'
 
 
 const Event = ({ event }) => {
@@ -25,4 +26,8 @@ const Event = ({ event }) => {
   )
 }
 
-export default Event
+export default Event;
+
+Event.propTypes = {
+  event: PropTypes.object.isRequired
+}
