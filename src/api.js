@@ -49,8 +49,11 @@ const getToken = async (code) => {
   try {
     const encodeCode = encodeURIComponent(code);
  
+    const url = "https://ms8edqfzoi.execute-api.eu-central-1.amazonaws.com/dev/api/token";
     // eslint-disable-next-line no-useless-concat
-    const response = await fetch("https://ms8edqfzoi.execute-api.eu-central-1.amazonaws.com/dev/api/token" + "/" + encodeCode);
+
+    const getUrl = `${url}` + "/" + `${encodeCode}`;
+    const response = await fetch(getUrl);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)
     }
@@ -69,17 +72,18 @@ export const getEvents = async () => {
   }
 
   const token = await getAccessToken();
+  const url =  "https://ms8edqfzoi.execute-api.eu-central-1.amazonaws.com/dev/api/get-events";
 
   if (token) {
     removeQuery();
-    const url =  "https://ms8edqfzoi.execute-api.eu-central-1.amazonaws.com/dev/api/get-events" + "/" + token;
-    const response = await fetch(url);
+    const eventsURL = url + "/" + token;
+    const response = await fetch(eventsURL);
     const result = await response.json();
     if (result) {
       return result.events;
     } else return null; 
   }
-}; 
+};  
 
 const removeQuery = () => {
   let newurl;
