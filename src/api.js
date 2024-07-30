@@ -81,8 +81,8 @@ export const getEvents = async () => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        if (!data.events) return [];
-        const result = data.events;
+        if (!data) return [];
+        const result = data;
         console.log(result);
         return result;
       }
