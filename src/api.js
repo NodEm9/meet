@@ -77,11 +77,18 @@ export const getEvents = async () => {
   if (token) {
     removeQuery();
     const eventsURL = url + "/" + token;
-    const response = await fetch(eventsURL);
-    const result = await response.json();
-    if (result) {
-      return result.events;
-    } else return null; 
+    const response = fetch(eventsURL)
+      .then((response) => response.json())
+      .then((data) => {
+        if (!data.events) return [];
+        const result = data.events; 
+        return result;
+      }
+    ).catch((error) => { 
+      console.log(error);
+    });
+    
+    return response;
   }
 };  
 
