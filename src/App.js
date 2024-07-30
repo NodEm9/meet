@@ -13,7 +13,6 @@ const App = () => {
   const [allLocations, setAllLocations] = useState([]);
   const [currentCity, setCurrentCity] = useState("See all cities");
 
-
   useEffect(() => {
     const fetchData = async () => {
       const allEvents = await getEvents();
