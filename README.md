@@ -17,14 +17,44 @@ As a user, I want to be able to manage and visualize event details easily. I wan
 ## Gherkin Syntax
 
 ```gherkin
-Feature: Event Management
+Feature: Filter Events By City
 
-  Scenario: Show/Hide Event Details
+  Scenario 1: When user hasn’t searched for a city, show upcoming events from all cities
+    Given user hasn't search for a city
+    When user opens the app
+    Then the user should see the list of all upcoming events
+
+  Scenario 2:  User should see a list of suggestions when they search for a city
+    Given the user open the app
+    When the user start typing a city name in the textbox 
+    Then user should see a list of suggestion of cities from the dropdown 
+
+  Scenario 3: User can select a city from the suggested list
+    Given the event list is displayed
+    When the user selects a city "Berlin Germany" from the city filter dropdown
+    Then only events in "Berlin Germany" should be visible
+
+Feature: 2: Show/Hide Event Details
+
+  Scenario 1:  An event element is collapsed by default
     Given I am on the event management app
     When I toggle the visibility of event details
     Then I should be able to see/hide the event details
+  
+  Scenario 2: User can expand an event to see details
+    Given the app is open and events are displayed
+    When the user click the show event button 
+    Then the user should see the hidden event expand to view.
 
-  Scenario: Specify Number of Events
+  Scenario 3: User can collapse an event to hide details.
+    Given the event is expanded and it's in visible
+    When user click then hide event button
+    Then I should see the event collape and hidden
+
+
+Feature 3: Specify Number of Events
+
+  Scenario: : When user hasn’t specified a number, 32 events are shown by default.
     Given I am on the event management app
     When I specify the number of events to display
     Then I should see the specified number of events
