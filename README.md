@@ -20,51 +20,77 @@ As a user, I want to be able to manage and visualize event details easily. I wan
 
 Feature: Filter Events By City
 
-  Scenario 1: When user hasn’t searched for a city, show upcoming events from all cities
+  Scenario: When user hasn’t searched for a city, show upcoming events from all cities
     Given user hasn't search for a city
     When user opens the app
     Then the user should see the list of all upcoming events
 
-  Scenario 2:  User should see a list of suggestions when they search for a city
+  Scenario:  User should see a list of suggestions when they search for a city
     Given the user open the app
     When the user start typing a city name in the textbox 
     Then user should see a list of suggestion of cities from the dropdown 
 
-  Scenario 3: User can select a city from the suggested list
+  Scenario: User can select a city from the suggested list
     Given the event list is displayed
-    When the user selects a city "Berlin Germany" from the city filter dropdown
-    Then only events in "Berlin Germany" should be visible
+    And the list of suggested cities is showing
+    When the user selects a city (e.g., “Berlin, Germany”) from the list
+    Then their city should be changed to that city (i.e., “Berlin, Germany”)
+    And the user should receive a list of upcoming events in that city
 
 Feature: 2: Show/Hide Event Details
 
-  Scenario 1:  An event element is collapsed by default
-    Given I am on the event management app
-    When I toggle the visibility of event details
-    Then I should be able to see/hide the event details
+  Scenario:  An event element is collapsed by default
+    Given user is on the app
+    When the app display list of events
+    Then the user should see the event element collapsed by default. 
   
-  Scenario 2: User can expand an event to see details
-    Given the app is open and events are displayed
+  Scenario: User can expand an event to see details
+    Given the app is and events details are hidden
     When the user click the show event button 
     Then the user should see the hidden event expand to view.
 
-  Scenario 3: User can collapse an event to hide details.
+  Scenario: User can collapse an event to hide details.
     Given the event is expanded and it's in visible
     When user click then hide event button
     Then I should see the event collape and hidden
 
 
-Feature 3: Specify Number of Events
+Feature: Specify Number of Events
 
-  Scenario: : When user hasn’t specified a number, 32 events are shown by default.
-    Given I am on the event management app
-    When I specify the number of events to display
-    Then I should see the specified number of events
+  Scenario: Show default number of events when user hasn’t specified a number
+    Given the event app is displayed
+    And the user has not specified the number of events to display
+    When the user view events section
+    Then 32 events should be displayed by default
 
-  Scenario: Use the App When Offline
-    Given I have the event management app installed
-    When I am offline
-    Then I should still be able to use the app and access event information
+  Scenario: User can change the number of events displayed
+    Given the event app is displayed
+    And the user has specified the number of events to display as "10"
+    When the user changes the number of events to display to "10"
+    Then the event list should display "10" events
 
+
+Feature 4: Use the App When Offline.
+
+  Scenario: Show cached data when there’s no internet connection
+    Given the event app is installed as a PWA
+    And the app is currently offline
+    And there is cached event data available
+    When the user opens the app
+    Then the app should display the cached event data
+
+  Scenario: Show error when user changes search settings (city, number of events)
+    Given the event app is installed as a PWA
+    And the app is currently offline
+    When the user attempts to change the search settings to a different city "New York"
+    Then an error message "Cannot change settings while offline" should be displayed
+
+    Given the event app is installed as a PWA
+    And the app is currently offline
+    When the user attempts to change the number of events to display to "10"
+    Then an error message "Cannot change settings while offline" should be displayed```
+
+  
   Scenario: Add an App Shortcut to the Home Screen
     Given I have the event management app installed
     When I add a shortcut to the home screen
