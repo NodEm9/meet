@@ -7,43 +7,6 @@
   --color-quinary: #111;
   --color-white: #fff;
   --color-black: #000;
-  --color-red: #ff0000;
-  --color-green: #00ff00;
-  --color-blue: #0000ff;
-  --color-yellow: #ffff00;
-  --color-orange: #ff8000;
-  --color-purple: #8000ff;
-  --color-pink: #ff0080;
-  --color-cyan: #00ffff;
-  --color-gray: #808080;
-  --color-lightgray: #d3d3d3;
-  --color-darkgray: #a9a9a9;
-  --color-brown: #a52a2a;
-  --color-gold: #ffd700;
-  --color-silver: #c0c0c0;
-  --color-bronze: #cd7f32;
-  --color-rose: #ff007f;
-  --color-lime: #00ff80;
-  --color-teal: #008080;
-  --color-indigo: #4b0082;
-  --color-violet: #9400d3;
-  --color-magenta: #ff00ff;
-  --color-crimson: #dc143c;
-  --color-maroon: #800000;
-  --color-navy: #000080;
-  --color-olive: #808000;
-  --color-salmon: #fa8072;
-  --color-turquoise: #40e0d0;
-  --color-lavender: #e6e6fa;
-  --color-beige: #f5f5dc;
-  --color-ivory: #fffff0;
-  --color-khaki: #f0e68c;
-  --color-azure: #f0ffff;
-  --color-coral: #ff7f50;
-  --color-tomato: #ff6347;
-  --color-sienna: #a0522d;
-  --color-thistle: #d8bfd8;
-  --color-plum: #dda0dd;
 }
 
 body {
@@ -139,12 +102,14 @@ body {
 }
 
 .eventSummary {
-  line-height: 0.5;
+  line-height: 1.2;
+  font-size: calc(10px + 1vmin);
 }
 
 .eventSummary .location {
   margin-top: 3rem;
   font-size: calc(12px + 1vmin);
+  line-height: 1.3;
 }
 
 .details-btn {
@@ -194,7 +159,7 @@ body {
   }
 
   .eventSummary {
-    line-height: 1;
+    line-height: 1.2;
   }
 
   .event .details-btn{
