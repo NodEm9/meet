@@ -43,7 +43,7 @@ defineFeature(feature, (test) => {
     given('the event app is displayed', () => {
       AppComponent = render(<App />).container.firstChild;
     });
-
+ 
     and(/^the user has specified the number of events to display as "(.*)"$/, async () => {
       const EventListDOM = AppComponent.querySelector('#event-list');
       NumberOfEventsComponent = render(<NumberOfEvents setCurrentNOE={() => { }} />, { container: EventListDOM });
