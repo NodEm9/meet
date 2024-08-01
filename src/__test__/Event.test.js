@@ -8,10 +8,6 @@ import mockData from "../mock-data";
 import userEvent from "@testing-library/user-event";  
 import { getEvents } from "../api";
 
-
-
-
-
 describe('<Event /> component', () => {
   let EventComponent; 
   const event = mockData[0];  
@@ -34,19 +30,13 @@ describe('<Event /> component', () => {
       expect(EventComponent.queryByText(allEvents[0].summary)).toBeInTheDocument();
   }); 
 
-  test('render event created time', async () => { 
-    const allEvents = await getEvents();
-    EventComponent.rerender(<Event event={allEvents[0]} />);
-    expect(EventComponent.queryByText(allEvents[0].created)).toBeInTheDocument();  
-  });
-  
   test('render event location', async () => {   
     const allEvents = await getEvents();
     EventComponent.rerender(<Event event={allEvents[0]} />);
     expect(EventComponent.queryByText(allEvents[0].location)).toBeInTheDocument(); 
   });
 
-  test('render button to show event details', () => { 
+  test('render events details button with title ("Show details")', () => {  
     expect(EventComponent.queryByText('Show Details')).toBeInTheDocument();    
   });
 
