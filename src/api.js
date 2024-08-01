@@ -13,7 +13,7 @@ import NProgress from "nprogress";
 export const extractLocations = (events) => {
   const extractedLocations = events.map((event) => event.location);
   const locations = [...new Set(extractedLocations)];
-  return locations; 
+  return locations;  
 }; 
 
 const checkToken = async (accessToken) => {

@@ -20,6 +20,7 @@ describe('filter events by city', () => {
     browser.close();
   }); 
 
+
   test('When user hasn’t searched for a city, show upcoming events from all cities', async () => {
     const events = await page.$('.event'); 
     expect(events).toBeDefined();
@@ -44,9 +45,9 @@ describe('show/hide an event details', () => {
   let page;
   beforeAll(async () => {
     browser = await puppeteer.launch({
-      headless: true,
+      headless: false,
       slowMo: 250, // slow down by 250ms
-      timeout: 0 
+      timeout: 0  
     });
     page = await browser.newPage();
     await page.goto('http://localhost:3000/');  
