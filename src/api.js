@@ -83,11 +83,9 @@ export const getEvents = async () => {
     const response = fetch(eventsURL)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         if (!data) return [];
         //access data directly instead not data.events
         const result = data;
-        console.log(result);
         return result;
       }
     ).catch((error) => { 
