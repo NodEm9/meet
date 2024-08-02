@@ -22,7 +22,7 @@ const App = () => {
     const allEvents = await getEvents();
     const filteredEvents = currentCity === "See all cities" ?
       allEvents : allEvents.filter(event => event.location === currentCity)
-    const currentEvents = filteredEvents.slice(0, currentNOE)
+    const currentEvents = filteredEvents?.slice(0, currentNOE)
     setEvents(currentEvents);
     setAllLocations(extractLocations(allEvents));
   }
