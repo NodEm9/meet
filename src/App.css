@@ -41,7 +41,7 @@ h1 {
 }
 
 .city, .number {
-  width: 100%;
+  width: auto;
   padding: 1rem 2rem;
   border-radius: 5px;
 }
@@ -59,11 +59,10 @@ h1 {
 }
 
 .suggestions {
-  position: relative;
+  position: absolute;
   border: 1px solid var(--color-tertiary);
   background-color: var(--color-primary);
   list-style: none;
-  position: absolute;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   margin-top: -3rem;
