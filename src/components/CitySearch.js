@@ -28,6 +28,7 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
  
   return (
     <div id="city-search">
+      <label htmlFor="city" id='city-label'>Search City:</label>
       <input 
         type="text"
         className="city"
@@ -35,6 +36,9 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
         placeholder='Search for a city...'
         onFocus={() => setShowSuggestions(true)}
         onChange={handleInputChanged}
+        onInput={() => (
+          query.length === 0 ? setShowSuggestions(false) : setShowSuggestions(true)
+        )}
       />
       {showSuggestions ? <ul className="suggestions">
         {suggestions.map((suggestion) => {

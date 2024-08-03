@@ -1,6 +1,6 @@
 
 :root {
-  --color-primary: #f9f9f9;
+  --color-primary: #ffffff;
   --color-secondary: #f4f4f4;
   --color-tertiary: #333;
   --color-quaternary: #222;
@@ -9,89 +9,114 @@
   --color-black: #000;
 }
 
-body {
+
+.App {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   line-height: 1.6;
   margin: 0;
   padding: 0;
-  background-color: var(--color-primary);
   color: var(--color-tertiary);
-}
-
-.App {
   text-align: center;
 }
 
-.navigation {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.3rem 1rem;
-  background-color: var(--color-secondary);
-  border-bottom: 1px solid var(--color-tertiary);
-}
-
-.navigation h1 {
+h1 {
+  font-size: calc(18px + 2vmin);
   margin: 0;
-  padding: 0;
-}
-
- .nav-items {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  list-style-type: none;
-} 
-
-.nav-items li {
-  margin: 0 1rem;
-}
-
-.nav-items li:hover li:focus {
-  cursor: pointer;
-}
-
-.nav-items li:active {
-  color: var(--color-primary);
-  background-color: var(--color-tertiary);
-}
-
-.nav-items li:visited {
-  color: var(--color-tertiary);
+  padding: 2.5rem;
+  margin-top: 4rem;
+  
 }
 
 .search {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 1rem;
-  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
-#numberOfevents {
+.search .city, img, .number {
+  margin: 0 auto;
+}
+
+.city, .number {
+  width: 100%;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+}
+
+.search .number, #number-label {
+  margin-left: -4.5rem;
+}
+
+.search img {
+  width: 250px;
+  height: 90px;
+  margin: 0;
+  padding: 0;
+  margin-left: -2.2rem;
+}
+
+.suggestions {
+  position: relative;
+  border: 1px solid var(--color-tertiary);
+  background-color: var(--color-primary);
+  list-style: none;
+  position: absolute;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin-top: -3rem;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.city, .suggestions {
+  position: relative;
+  width: auto;
+  background-color: var(--color-primary);
+  margin: 0;
+  z-index: 1;
+}
+
+#numberOfevents, #city-search {
   display: flex;
   flex-direction: column;
-  width: fit-content;
+  width: auto;
   margin: 0 auto;
   text-align: left;
+  padding: 0.6rem 3rem;
 }
 
-#event-list {
+label {
+  font-weight: 700;
+}
+
+.App #event-list {
   display: grid;
   grid-template-columns: auto;
   grid-gap: 1rem;
-  padding: 1rem;
+  max-width: 80%;
+  padding: 5rem;
+  margin: 0 auto;
+}
+
+#event-list {
+  max-width: 80%;
+  padding: 5rem;
 }
 
 #event-list li {
  margin: 0 auto; 
  text-align: left;
+ 
 }
 
 .event {
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: space-between;
-  width: 50%;
+  width: 80%;
   background-color: var(--color-primary);
   border: 1px solid var(--color-tertiary);
   border-radius: 5px;
@@ -117,6 +142,11 @@ body {
   height: 40px;
   padding: 0.5rem 1rem;
   cursor: pointer;
+  border-radius: 5px;
+  font-size: calc(10px + 1vmin);
+  font-weight: 700;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
 }
 
 .event .details-btn {
@@ -136,20 +166,60 @@ body {
     padding: 0;
   }
 
-  .navigation{
-    padding: 0.7rem 0.7rem;
+  .App #event-list {
+    display: grid;
+    grid-template-columns: auto;
+    grid-gap: 1rem;
+    max-width: 80%;
+    padding: 1rem;
+    margin: 0 auto;
   }
 
-  .navigation h1 {
+  h1 {
+    font-size: calc(36px + 2vmin);
     margin: 0;
-    padding: 0;
-    font-size: 1.4rem;
+    padding: 2.5rem;
+    margin-top: 2rem;
+  }
+  
+  .search {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .search .city, img, .number{
+    padding: 1rem 2rem;
+    margin: 0 auto;
+  }
+
+  .city, .number {
+    width: auto;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+  }
+
+  img {
+    margin: 0 auto;
+  }
+  
+  .search .number, #number-label {
+    margin-left: 0;
+  }
+
+  #numberOfevents {
+    margin-top: 10px;
+  }
+
+  .city, .suggestions {
+    width: auto;
+    padding: 0.5rem 1rem;
   }
 
   #event-list {
     grid-template-columns: 1fr;
     width: auto;
-    padding: 10px;
+    padding: 5px;
   }
 
   .event {
@@ -168,7 +238,7 @@ body {
     padding: 0.5rem 1rem;
     cursor: pointer;
     margin-top: 12px;
-  
+    margin-right: -1rem;
   }
   
   

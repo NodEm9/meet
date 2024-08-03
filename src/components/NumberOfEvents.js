@@ -13,7 +13,7 @@ const NumberOfEvents = ({ setCurrentNOE }) => {
 
   return (
     <div id="numberOfevents">
-      <label>Number of Events:</label>
+      <label htmlFor="number" id="number-label">Number of Events:</label>
       <input
         type="text"
         className="number"

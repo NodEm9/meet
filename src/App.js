@@ -4,6 +4,8 @@ import CitySearch from './components/CitySearch';
 import Navigation from './components/Navigation';
 import NumberOfEvents from './components/NumberOfEvents';
 import { extractLocations, getEvents } from './api';
+import loca from './images/loca.jpg';
+
 
 
 import './App.css';
@@ -22,7 +24,7 @@ const App = () => {
     const allEvents = await getEvents();
     const filteredEvents = currentCity === "See all cities" ?
       allEvents : allEvents.filter(event => event.location === currentCity)
-    const currentEvents = filteredEvents?.slice(0, currentNOE)
+    const currentEvents = filteredEvents.slice(0, currentNOE)
     setEvents(currentEvents);
     setAllLocations(extractLocations(allEvents));
   }
@@ -30,9 +32,10 @@ const App = () => {
 
   return (
     <div className="App">
-      <Navigation />
+       <h1>Meet App</h1>
       <section className="search">
         <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} />
+        <img src={loca} alt='location' />
         <NumberOfEvents setCurrentNOE={setCurrentNOE} />
       </section>
       <EventList events={events} />
