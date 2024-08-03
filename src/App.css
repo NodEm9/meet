@@ -11,13 +11,18 @@
 
 
 .App {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 16px;
   line-height: 1.6;
   margin: 0;
   padding: 0;
   color: var(--color-tertiary);
   text-align: center;
+}
+
+.App h1, .search, #event-list {
+  padding: 5rem;
+  margin: 0 auto;
 }
 
 h1 {
@@ -31,36 +36,43 @@ h1 {
 .search {
   display: flex;
   justify-content: space-between;
-  margin: 0;
-  padding: 0;
-  width: 100%;
+  align-items: center;
+  padding: 5px;
+  max-width: 80%;
 }
 
-.search .city, img, .number {
+.search #numberOfevents, img, #city-search {
   margin: 0 auto;
+  padding: 0;
 }
 
-.city, .number {
+#numberOfevents, #city-search {
+  display: flex;
+  flex-direction: column;
   width: auto;
+  text-align: left;
+}
+
+#city-search .city label {
+  margin-top: 0rem;
+}
+
+.city , .number {
+  width: 250px;
   padding: 1rem 2rem;
   border-radius: 5px;
 }
 
-.search .number, #number-label {
-  margin-left: -4.5rem;
-}
-
-.search img {
-  width: 250px;
+img {
+  width: 200px;
   height: 90px;
   margin: 0;
   padding: 0;
-  margin-left: -2.2rem;
 }
 
 .suggestions {
   position: absolute;
-  width: 100%;
+  width: 250px;
   border: 1px solid var(--color-tertiary);
   background-color: var(--color-primary);
   list-style: none;
@@ -73,24 +85,10 @@ h1 {
 
 .city, .suggestions {
   position: relative;
-  width: auto;
+  width: 250px;
   background-color: var(--color-primary);
   margin: 0;
   z-index: 1;
-}
-
-.search #numberOfevents, img, #city-search {
-  width: auto;
-  margin: 0 auto;
-}
-
-#numberOfevents, #city-search {
-  display: flex;
-  flex-direction: column;
-  width: auto;
-
-  text-align: left;
-  padding: 0.6rem 3rem;
 }
 
 label {
@@ -207,10 +205,6 @@ label {
   img {
     margin: 0 auto;
   }
-  
-  .search .number, #number-label {
-    margin-left: 0;
-  }
 
   #numberOfevents {
     margin-top: 10px;
@@ -245,6 +239,5 @@ label {
     margin-top: 12px;
     margin-right: -1rem;
   }
-  
   
 }
