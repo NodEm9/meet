@@ -32,11 +32,11 @@ const App = () => {
 
   return (
     <div className="App">
-       <h1>Meet App</h1>
+      <h1>Meet App</h1>
       <section className="search">
         <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} />
-        <img src={loca} alt='location' />
-        <NumberOfEvents setCurrentNOE={setCurrentNOE} />
+          <img src={loca} alt='location' />
+          <NumberOfEvents setCurrentNOE={setCurrentNOE} />
       </section>
       <EventList events={events} />
     </div>
