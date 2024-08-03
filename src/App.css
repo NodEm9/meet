@@ -60,6 +60,7 @@ h1 {
 
 .suggestions {
   position: absolute;
+  width: 100%;
   border: 1px solid var(--color-tertiary);
   background-color: var(--color-primary);
   list-style: none;
@@ -78,11 +79,16 @@ h1 {
   z-index: 1;
 }
 
+.search #numberOfevents, img, #city-search {
+  width: auto;
+  margin: 0 auto;
+}
+
 #numberOfevents, #city-search {
   display: flex;
   flex-direction: column;
   width: auto;
-  margin: 0 auto;
+
   text-align: left;
   padding: 0.6rem 3rem;
 }
