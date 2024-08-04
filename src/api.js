@@ -11,7 +11,7 @@ import NProgress from "nprogress";
  * The Set will remove all duplicates from the array.
  */
 export const extractLocations = (events) => {
-  const extractedLocations = events.map((event) => event.location);
+  const extractedLocations = events.map((event) => event?.location);
   const locations = [...new Set(extractedLocations)];
   return locations;  
 }; 

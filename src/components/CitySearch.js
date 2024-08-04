@@ -31,7 +31,7 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
       <label htmlFor="city" id='city-label'>Search City:</label>
       <input 
         type="text"
-        className="city"
+        className="city" 
         value={query}
         placeholder='Search for a city...'
         onFocus={() => setShowSuggestions(true)}
@@ -39,6 +39,7 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
         onInput={() => (
           query.length === 0 ? setShowSuggestions(false) : setShowSuggestions(true)
         )}
+        
       />
       {showSuggestions ? <ul className="suggestions">
         {suggestions.map((suggestion) => {

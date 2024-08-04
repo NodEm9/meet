@@ -35,16 +35,19 @@ h1 {
 
 .search {
   display: flex;
-  position: relative;
   justify-content: space-between;
   align-items: center;
-  padding: 5px;
+  padding: 0 20rem;
   max-width: 80%;
 }
 
-.search #numberOfevents, img, #city-search {
-  margin: 0 auto;
-  padding: 0;
+#numberOfevents {
+  width: 100%;
+  height: auto;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem;
+  border-radius: 5px;
 }
 
 #numberOfevents, #city-search {
@@ -56,6 +59,7 @@ h1 {
 
 #city-search .city label {
   margin-top: 0rem;
+  margin: 0 auto;
 }
 
 .city , .number {
@@ -73,7 +77,6 @@ img {
 
 .suggestions {
   position: absolute;
-  width: 250px;
   border: 1px solid var(--color-tertiary);
   background-color: var(--color-primary);
   list-style: none;
@@ -86,7 +89,6 @@ img {
 
 .city, .suggestions {
   position: relative;
-  width: 250px;
   background-color: var(--color-primary);
   margin: 0;
   z-index: 1;
@@ -188,13 +190,11 @@ label {
   
   .search {
     flex-direction: column;
-    /* justify-content: center;
-    align-items: center; */
+    padding: 0 1rem;
   }
 
   .search .city, img, .number{
     padding: 1rem 2rem;
-    /* margin: 0 auto; */
   }
 
   .city, .number {
@@ -215,7 +215,9 @@ label {
 
   .city, .suggestions {
     width: 100%;
+    margin: 0;
     padding: 0.5rem 1rem;
+    align-items: flex-start;
   }
 
   #event-list {
