@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import EventList from './components/EventList';
 import CitySearch from './components/CitySearch';
-import Navigation from './components/Navigation';
 import NumberOfEvents from './components/NumberOfEvents';
 import { extractLocations, getEvents } from './api';
 import loca from './images/loca.jpg';
