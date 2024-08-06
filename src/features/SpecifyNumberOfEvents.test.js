@@ -1,13 +1,11 @@
 /* eslint-disable testing-library/no-render-in-setup */
 /* eslint-disable testing-library/prefer-screen-queries */
 /* eslint-disable testing-library/no-node-access */
-import { render, within} from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { loadFeature, defineFeature } from "jest-cucumber";
 import App from "../App";
 import NumberOfEvents from "../components/NumberOfEvents";
 import userEvent from "@testing-library/user-event";
-import { getEvents } from "../api";
-import EventList from "../components/EventList"; // Add this line
 
 
 const feature = loadFeature("./src/features/SpecifyNumberOfEvents.feature");
@@ -46,7 +44,10 @@ defineFeature(feature, (test) => {
  
     and(/^the user has specified the number of events to display as "(.*)"$/, async () => {
       const EventListDOM = AppComponent.querySelector('#event-list');
-      NumberOfEventsComponent = render(<NumberOfEvents setCurrentNOE={() => { }} />, { container: EventListDOM });
+      NumberOfEventsComponent = render(<NumberOfEvents
+        setCurrentNOE={() => { }}
+        setErrorAlert={() => { }}
+      />, { container: EventListDOM }); 
       const user = userEvent.setup();
       const numberOfEvents = NumberOfEventsComponent.getByRole('textbox');
       await user.type(numberOfEvents, '{backspace}{backspace}10'); 
