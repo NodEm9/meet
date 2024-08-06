@@ -1,14 +1,20 @@
 import { useState } from "react"
 import PropTypes from 'prop-types'
 
-const NumberOfEvents = ({ setCurrentNOE }) => {
+const NumberOfEvents = ({ setCurrentNOE, setErrorAlert }) => {
   const [number, setNumber] = useState(32)
 
   const handleInputChanged = (e) => {
     let value = e.target.value
-    console.log('value', value)
     setNumber(value)
+    let errorText;
+    if(value === isNaN || value.length <= 0) { 
+      errorText = 'Please enter a valid number'
+    } else {
+      errorText = ''
+    }
     setCurrentNOE(value)
+    setErrorAlert(errorText) 
   }
 
   return (
