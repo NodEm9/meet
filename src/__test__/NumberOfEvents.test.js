@@ -10,12 +10,12 @@ import { getEvents } from "../api";
 describe('<NumberOfEvents /> component', () => { 
   let NumberOfEventsComponent;
   beforeEach(() => {
-    NumberOfEventsComponent = render(<NumberOfEvents setCurrentNOE={() => {}} />);
+    NumberOfEventsComponent = render(<NumberOfEvents setCurrentNOE={() => {}} setErrorAlert={() => {}} />);
   });
-
+ 
   test('render element with role of textbox', () => { 
     const input = NumberOfEventsComponent.queryByRole('textbox');
-    expect(input).toBeInTheDocument();
+    expect(input).toBeInTheDocument(); 
   });
 
 
@@ -28,7 +28,7 @@ describe('<NumberOfEvents /> component', () => {
     const user = userEvent.setup(); 
     await user.type(numverOfEvents, '{backspace}{backspace}10');   
     const allEvents = await getEvents(); 
-    NumberOfEventsComponent.rerender(<NumberOfEvents setCurrentNOE={allEvents} />);  
+    NumberOfEventsComponent.rerender(<NumberOfEvents setCurrentNOE={allEvents} setErrorAlert={() => {}} />);   
     expect(numverOfEvents).toHaveValue('10'); 
   }); 
 });  
