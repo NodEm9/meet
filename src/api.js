@@ -74,6 +74,12 @@ export const getEvents = async () => {
     return mockData;
   }
 
+  if (!navigator.onLine) {
+    const events = localStorage.getItem("lastEvents");
+    NProgress.done();
+    return events?JSON.parse(events):[];
+  }
+
   const token = await getAccessToken();
   const url =  "https://ms8edqfzoi.execute-api.eu-central-1.amazonaws.com/dev/api/get-events";
 
