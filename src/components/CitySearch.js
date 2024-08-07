@@ -37,7 +37,8 @@ const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
  
   return (
     <div id="city-search">
-      <label htmlFor="city" id='city-label'>Search City:</label>
+      <label htmlFor="city" id='city-label'>
+        Search City:
       <input 
         type="text"
         className="city" 
@@ -49,7 +50,8 @@ const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
           query.length === 0 ? setShowSuggestions(false) : setShowSuggestions(true)
         )}
         
-      />
+        />
+        </label>
       {showSuggestions ? <ul className="suggestions">
         {suggestions.map((suggestion) => {
           return <li key={suggestion} onClick={handleItemClicked}>{suggestion}</li>

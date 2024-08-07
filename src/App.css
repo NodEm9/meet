@@ -10,7 +10,9 @@
 
 
 .App {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   font-size: 16px;
   line-height: 1.6;
   margin: 0;
@@ -19,25 +21,16 @@
   text-align: center;
 }
 
-.App h1,
-.search,
+/* .App h1,
+#numberOfevents,
+#city-search,
 #event-list {
-  padding: 2rem 5rem;
   margin: 0 auto;
-  max-width: 80%;
-}
+} */
 
 h1 {
   font-size: calc(48px + 2vmin);
-  margin: 0;
-  padding: 2.5rem;
   margin-top: 4rem;
-}
-
-.App .search {
-  display: grid;
-  grid-template-columns: auto;
-  margin: 0 auto;
 }
 
 .alerts-container {
@@ -50,21 +43,25 @@ h1 {
 
 #numberOfevents,
 #city-search {
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
   text-align: left;
+  width: 450px;
+}
+
+.number, #number {
+  width: 100%;
 }
 
 #city-search .city,
 #city-label {
+  width: 450px;
   margin-top: 0rem;
-  left: 0;
 }
 
 .city,
 .number {
-  width: 100%;
-  padding: 1rem 2rem;
+  padding: 1rem;
   border-radius: 5px;
 }
 
@@ -72,11 +69,14 @@ img {
   width: auto;
   height: 90px;
   margin: 0;
-  padding: 0;
+}
+
+.city {
+  position: relative;
 }
 
 .suggestions {
-  position: absolute;
+  /* position: absolute; */
   border: 1px solid var(--color-tertiary);
   background-color: var(--color-primary);
   list-style: none;
@@ -85,13 +85,13 @@ img {
   margin-top: -3rem;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
   z-index: 1;
+  /* margin: 0 auto; */
 }
 
 .city,
 .suggestions {
-  position: relative;
+  width: 450px;
   background-color: var(--color-primary);
-  margin: 0;
   z-index: 1;
 }
 
@@ -99,27 +99,22 @@ label {
   font-weight: 700;
 }
 
-.App #event-list {
-  display: grid;
-  grid-template-columns: auto;
-}
-
 #event-list {
-  max-width: 80%;
-  padding: 5rem;
+  display: grid;
+  grid-template-columns: auto auto;
+  width: 100%;
+  padding: 1rem;
 }
 
 #event-list li {
   margin: 0 auto;
   text-align: left;
-
 }
 
 .event {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   justify-content: space-between;
-  width: 80%;
   background-color: var(--color-primary);
   border: 1px solid var(--color-tertiary);
   border-radius: 5px;
@@ -166,31 +161,30 @@ label {
 
 @media screen and (min-width: 500px) {
   .App {
+    display: block;
     padding: 0;
   }
 
-  .App
-  .search, h1, #event-list {
-    padding: 2rem 5rem;
+  .App h1, #city-search, #numberOfevents, img , #event-list {
+    padding: 1rem;
     margin: 0 auto;
-    max-width: 100%;
+    /* max-width: 100%; */
   }
 
-  .App
-  .search {
-    grid-template-columns: auto 50% auto;
-    width: 80%;
+  .App:first-child {
+    font-size: 24px;
+    font-weight: 600;
+    text-wrap: wrap;
   }
 
-  .App #event-list {
-    grid-template-columns: 1fr 40%;
+ #event-list {
+    grid-template-columns: 1fr;
     grid-gap: 3rem;
     width: auto;
-    padding: 5rem;
     margin: 0 auto;
   }
 
-  #city-search, #numberOfevents, img {
+  #city-search, #numberOfevents{
     margin: 0 auto;
   }
 
@@ -202,16 +196,24 @@ label {
     padding: 1rem;
   }
 
-  .city, .number {
-    width: 100%;
-    padding: 1rem 2rem;
-    border-radius: 5px;
+  #numberOfevents .number, #number {
+    margin: 0 auto;
+  }
+  
+  #city-search .city,
+  #city-label {
+    width: 450px;
+    margin-top: 0rem;
+    margin: 0 auto;
   }
 
+  img {
+    width: 30%;
+    margin: 0 auto;
+  }
 
   .event {
-    grid-template-columns: 1fr;
-    width: 100%;
+    width: 55rem;
     padding: 1rem;
   }
 
@@ -221,24 +223,28 @@ label {
 
 @media screen and (max-width: 768px) {
   .App {
-    padding: 0;
-  }
-
-  .App h1, .search, #event-list {
+    padding: 10px;
     margin: 0 auto;
+    width: auto;
+    overflow-x: hidden;
   }
 
-  .search {
-    grid-template-columns: 1fr;
-    justify-content: center;
-    align-items: center;
+  .App:first-child {
+    font-size: 22px;
+    font-weight: 600;
+    text-wrap: wrap;
   }
 
-  .App #event-list {
+  .App h1, #numberOfevents,#city-search, #event-list {
+    padding: 10px 5px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+ #event-list {
     display: grid;
     grid-template-columns: auto;
     grid-gap: 1rem;
-    max-width: 80%;
     padding: 1rem;
     margin: 0 auto;
   }
@@ -250,42 +256,50 @@ label {
     margin-top: 2rem;
   }
 
-  .App .search {
-    grid-template-rows: auto;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-  }
-
-  .city,
-  .number {
+  .city {
+    width: 50%;
     padding: 1rem 2rem;
     border-radius: 5px;
   }
 
-  .search {
-    display:flex;
+  #number .number {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    left: 0;
+    margin-left: -0.8rem;
+    
+  }
+
+  #numberOfevents {
+    width: auto;
+    margin: 0 auto;
+    /* padding: 1rem; */
+  }
+
+  #city-search {
+    width: auto;
+    padding: 1rem;
+  }
+
+  #city-label {
+    display: flex;
     flex-direction: column;
     margin: 0 auto;
-    width: auto;
   }
-
-#numberOfevents .number {
-  margin: 0 auto;
-  }
-
- #city-search, #numberOfevents, img {
-    width: 100%;
-    margin-left: -1.9rem;
+  
+  #city-label
+   .city {
+    width: 72%;
   }
 
   img {
+    width: 100%;
     margin: 0 auto;
-    width: auto;
   }
 
   .city, .suggestions {
-    width: 100%;
+    width: auto;
     margin: 0;
     padding: 1rem;
   }
@@ -298,12 +312,11 @@ label {
   #event-list {
     grid-template-columns: 1fr;
     width: auto;
-    padding: 5px;
+    /* padding: 5px; */
   }
 
   .event {
-    grid-template-columns: 1fr;
-    width: 80%;
+    width: 300px;
     padding: 0.5rem 2rem;
   }
 

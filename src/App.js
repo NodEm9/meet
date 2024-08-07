@@ -30,27 +30,26 @@ const App = () => {
     setEvents(currentEvents);
     setAllLocations(extractLocations(allEvents));
   }
- 
- 
-  return ( 
+
+
+  return (
     <div className="App">
       <h1>Meet App</h1>
+      <p>Choose your nearest city and see what's happening!</p>
       <div className="alerts-container">
         {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
         {errorAlert.length ? <ErrorAlert text={errorAlert} /> : null}
       </div>
-      <section className="search">
-        <CitySearch
-          allLocations={allLocations}
-          setCurrentCity={setCurrentCity}
-          setInfoAlert={setInfoAlert}
-        />
-          <img src={loca} alt='location' />
-        <NumberOfEvents
-          setCurrentNOE={setCurrentNOE}
-          setErrorAlert={setErrorAlert}
-        />
-      </section>
+      <CitySearch
+        allLocations={allLocations}
+        setCurrentCity={setCurrentCity}
+        setInfoAlert={setInfoAlert}
+      />
+      <NumberOfEvents
+        setCurrentNOE={setCurrentNOE}
+        setErrorAlert={setErrorAlert}
+      />
+      <img src={loca} alt='location' />
       <EventList events={events} />
     </div>
   );

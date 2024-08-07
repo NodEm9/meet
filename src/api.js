@@ -81,18 +81,28 @@ export const getEvents = async () => {
     removeQuery();
     const eventsURL = url + "/" + token;
     const response = fetch(eventsURL)
-      .then((response) => response.json())
-      .then((data) => {
-        if (!data) return [];
-        //access data directly instead not data.events
-        const result = data;
-        return result;
-      }
-    ).catch((error) => { 
-      console.log(error);
-    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+    NProgress.done();
+    const result = await response.json();
+    localStorage.setItem("lastEvents", JSON.stringify(result.events));
+    return result.events;
     
-    return response;
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     if (!data) return [];
+    //     NProgress.done();
+    //     localStorage.setItem("lastEvents", JSON.stringify(data));
+    //     //access data directly instead not data.events
+    //     const result = data;
+    //     return result;
+    //   }
+    // ).catch((error) => { 
+    //   console.log(error);
+    // });
+    
+    // return response;
   }
 };  
 
