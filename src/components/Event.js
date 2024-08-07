@@ -11,6 +11,9 @@ const Event = ({ event }) => {
         <h2>{event.summary}</h2>
         <p className="location">{event.location}</p>
         <p className="created">{event && (new Date(event.created)).toUTCString()}</p>
+        <p className="updated">{event && (new Date(event.updated)).toUTCString()}</p>
+        <p className="start">{event && (new Date(event.start.dateTime)).toUTCString()}</p>
+        <p className="originalStartTime">{event && (new Date(event.originalStartTime.dateTime)).toUTCString()}</p>
       </span>
       {showDetails ? (
         <div className='details' id="details" >
