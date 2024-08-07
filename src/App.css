@@ -229,13 +229,6 @@ label {
     width: 100%;
   }
 
- #event-list {
-    display: grid;
-    grid-template-columns: auto;
-    grid-gap: 1rem;
-    padding: 1rem;
-  }
-
   h1 {
     font-size: calc(36px + 2vmin);
     margin: 0;
@@ -291,23 +284,28 @@ label {
   }
 
   #event-list {
-    width: auto;
-    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+    padding: 1rem 0;
+    width: 81%;
+    margin: 0 auto;
   }
 
   .event {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: auto;
+    grid-template-rows: 1fr;
+    width: fit-content;
     padding: 0.5rem 2.5rem;
   }
 
   .eventSummary {
+    grid-area: span 2;
     line-height: 1.2;
   }
 
   .event .details-btn {
-    width: auto;
+    /* width: auto; */
     height: 40px;
     padding: 0.5rem 1rem;
     cursor: pointer;
