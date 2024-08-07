@@ -156,7 +156,6 @@ label {
 
   .App h1, #city-search, #numberOfevents, img , #event-list {
     padding: 1rem;
-    margin: 0 auto;
   }
 
   .App:first-child {
@@ -184,15 +183,20 @@ label {
     padding: 1rem;
   }
 
-  #numberOfevents .number, #number {
+  
+  #city-label, .city {
+
+    margin-top: 0rem;
+  }
+
+  .city, .suggestions {
+    position: relative;
     margin: 0 auto;
   }
-  
-  #city-search .city,
-  #city-label {
-    width: 450px;
-    margin-top: 0rem;
-    margin: 0 auto;
+
+  .suggestions {
+    position: absolute;
+    width: 23.3%;
   }
 
   img {
@@ -210,9 +214,7 @@ label {
 
 @media screen and (max-width: 768px) {
   .App {
-    padding: 10px;
     margin: 0 auto;
-    width: auto;
     overflow-x: hidden;
   }
 
@@ -224,7 +226,6 @@ label {
 
   .App h1, #numberOfevents,#city-search, #event-list {
     padding: 10px 5px;
-    margin: 0 auto;
     width: 100%;
   }
 
@@ -233,20 +234,12 @@ label {
     grid-template-columns: auto;
     grid-gap: 1rem;
     padding: 1rem;
-    margin: 0 auto;
   }
 
   h1 {
     font-size: calc(36px + 2vmin);
     margin: 0;
-    padding: 2.5rem;
     margin-top: 2rem;
-  }
-
-  .city {
-    width: 50%;
-    padding: 1rem 2rem;
-    border-radius: 5px;
   }
 
   #number .number {
@@ -271,33 +264,35 @@ label {
   #city-label {
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
+    width: 100%;
+    left: 0;
   }
   
   #city-label
    .city {
-    width: 72%;
+    width: auto;
+    padding: 1rem;
   }
-
+  
   img {
     width: 100%;
     margin: 0 auto;
   }
 
   .city, .suggestions {
-    width: auto;
+    position: relative;
     margin: 0;
-    padding: 1rem;
   }
 
   .suggestions {
-    position: relative;
+    position: absolute;
     z-index: 1;
+    width: 81%;  
   }
 
   #event-list {
     width: auto;
-    padding: 10px;
+    padding: 20px;
   }
 
   .event {
