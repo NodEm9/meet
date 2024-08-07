@@ -296,13 +296,15 @@ label {
   }
 
   #event-list {
-    grid-template-columns: 1fr;
     width: auto;
+    padding: 10px;
   }
 
   .event {
-    width: 300px;
-    padding: 0.5rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: auto;
+    padding: 0.5rem 2.5rem;
   }
 
   .eventSummary {
