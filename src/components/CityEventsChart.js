@@ -42,7 +42,7 @@ const CityEventsChart = ({ allLocations, events }) => {
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="city" type="category" name="City" />
-        <YAxis dataKey="count" type="number" name="number of events" />
+        <YAxis dataKey="count" type="number" name="number of events" allowDecimals={false} />
         <ZAxis dataKey="z" type="number" range={[64, 144]} name="score" unit="km" />
         <Tooltip cursor={{ strokeDasharray: '3 3' }} />
         <Legend />
