@@ -171,6 +171,7 @@ label {
     gap: 1rem;
     width: auto;
     margin: 0 auto;
+    margin-top: 1.5rem;
   }
 
   #city-search, #numberOfevents{
