@@ -80,7 +80,7 @@ export const getEvents = async () => {
   if (token) {
     removeQuery();
     const eventsURL = url + "/" + token;
-    const response = fetch(eventsURL)
+    const response = await fetch(eventsURL)
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)
     }
