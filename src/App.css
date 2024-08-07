@@ -288,8 +288,12 @@ label {
     grid-template-columns: 1fr;
     grid-gap: 1rem;
     padding: 1rem 0;
-    width: 81%;
+  }
+
+  #event-list li {
     margin: 0 auto;
+    text-align: left;
+    width: 68%;
   }
 
   .event {
@@ -305,7 +309,6 @@ label {
   }
 
   .event .details-btn {
-    /* width: auto; */
     height: 40px;
     padding: 0.5rem 1rem;
     cursor: pointer;
