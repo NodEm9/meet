@@ -21,13 +21,6 @@
   text-align: center;
 }
 
-/* .App h1,
-#numberOfevents,
-#city-search,
-#event-list {
-  margin: 0 auto;
-} */
-
 h1 {
   font-size: calc(48px + 2vmin);
   margin-top: 4rem;
@@ -43,8 +36,6 @@ h1 {
 
 #numberOfevents,
 #city-search {
-  /* display: flex;
-  flex-direction: column; */
   text-align: left;
   width: 450px;
 }
@@ -76,7 +67,6 @@ img {
 }
 
 .suggestions {
-  /* position: absolute; */
   border: 1px solid var(--color-tertiary);
   background-color: var(--color-primary);
   list-style: none;
@@ -85,7 +75,6 @@ img {
   margin-top: -3rem;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
   z-index: 1;
-  /* margin: 0 auto; */
 }
 
 .city,
@@ -168,7 +157,6 @@ label {
   .App h1, #city-search, #numberOfevents, img , #event-list {
     padding: 1rem;
     margin: 0 auto;
-    /* max-width: 100%; */
   }
 
   .App:first-child {
@@ -218,7 +206,6 @@ label {
   }
 
 }
-
 
 
 @media screen and (max-width: 768px) {
@@ -274,7 +261,6 @@ label {
   #numberOfevents {
     width: auto;
     margin: 0 auto;
-    /* padding: 1rem; */
   }
 
   #city-search {
@@ -312,7 +298,6 @@ label {
   #event-list {
     grid-template-columns: 1fr;
     width: auto;
-    /* padding: 5px; */
   }
 
   .event {
@@ -332,5 +317,4 @@ label {
     margin-top: 12px;
     margin-right: -1rem;
   }
-
 }
