@@ -22,11 +22,11 @@ const CityEventsChart = ({ allLocations, events }) => {
   const getData = () => {
     const data = allLocations.map((location) => {
       const count = events.filter((event) => event.location === location).length
-      const city = location.split(', ')[0]
+      const city = location.split((/, | - /))[0]
       return { city, count };
     })
     return data;
-  };
+  }; 
 
   return (
     <ResponsiveContainer width="100%" height={400}>
@@ -36,8 +36,8 @@ const CityEventsChart = ({ allLocations, events }) => {
         margin={{
           top: 20,
           right: 20,
-          bottom: 10,
-          left: 10,
+          bottom: 60,
+          left: -10,
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
@@ -54,7 +54,7 @@ const CityEventsChart = ({ allLocations, events }) => {
         <Tooltip cursor={{ strokeDasharray: '3 3' }} />
         <Legend />
         <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-        <Scatter name="A school" data={data} fill="#8884d8" />
+        <Scatter name="Popular Cities Events Chart" data={data} fill="#8884d8" />
       </ScatterChart>
     </ResponsiveContainer>
   );
