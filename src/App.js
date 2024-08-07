@@ -5,6 +5,7 @@ import NumberOfEvents from './components/NumberOfEvents';
 import { extractLocations, getEvents } from './api';
 import loca from './images/loca.jpg';
 import { InfoAlert, ErrorAlert, WarningAlert } from './components/Alert';
+import CityEventsChart from './components/CityEventsChart';
 
 
 
@@ -57,6 +58,7 @@ const App = () => {
         setErrorAlert={setErrorAlert}
       />
       <img src={loca} alt='location' />
+      <CityEventsChart allLocations={allLocations} events={events}/>
       <EventList events={events} />
     </div>
   );
