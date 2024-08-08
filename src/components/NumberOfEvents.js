@@ -16,24 +16,25 @@ const NumberOfEvents = ({ setCurrentNOE, setErrorAlert }) => {
     setCurrentNOE(value)
     setErrorAlert(errorText) 
   }
-
+ 
   return (
     <div id="numberOfevents">
       <label htmlFor="number" id="number">
         Number of Events:
       <input
-        type="number"
+        type="text"
         className="number"
         value={number}
         onChange={handleInputChanged}
         />
         </label>
-    </div>
+    </div> 
   )
 }
 
 export default NumberOfEvents
 
 NumberOfEvents.propTypes = {
-  setCurrentNOE: PropTypes.func.isRequired
+  setCurrentNOE: PropTypes.func.isRequired,
+  setErrorAlert: PropTypes.func.isRequired
 }
