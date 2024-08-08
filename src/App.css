@@ -6,6 +6,7 @@
   --color-quinary: #111;
   --color-white: #fff;
   --color-black: #000;
+  --bg-header: rgb(19, 19, 92);
 }
 
 
@@ -13,6 +14,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  max-width: 700px;
   font-size: 16px;
   line-height: 1.4;
   margin: 0;
@@ -21,38 +23,73 @@
   text-align: center;
 }
 
-h1 {
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-header);
+  color: #ffffff;
+  padding: 1rem;
+  line-height: 1;
+  margin: 0;
+  width: 100%;
+}
+
+.header h1 {
   font-size: calc(48px + 2vmin);
   margin-top: 2rem;
+  margin: 0;
 }
 
 .alerts-container {
   position: fixed;
   top: 0px;
-  left: 20px;
+  left: 0px;
   width: 250px;
   z-index: 1000;
+  font-weight: 600;
 }
 
-#numberOfevents,
-#city-search {
+
+#city-search, #numberOfevents {
   text-align: left;
   width: 450px;
 }
 
-.number, #number {
+
+ #number {
+  display: flex;
+  width: 100%;
+  font-size: 18px;
+  justify-content: space-between;
+  font-weight: 400;
+}
+
+.number {
   width: 100%;
 }
 
-#city-search .city,
+#city-search {
+  font-size: 18px;
+  font-weight: 400;
+}
+
 #city-label {
-  width: 450px;
-  margin-top: 0rem;
+  display: flex;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.city {
+  position: relative;
+  font-size: 22px;
 }
 
 .city,
 .number {
-  padding: 1rem;
+  padding: 0.5rem;
   border-radius: 5px;
   border: 1px solid var(--color-tertiary);
 }
@@ -63,14 +100,11 @@ img {
   margin: 0;
 }
 
-.city {
-  position: relative;
-  width: 450px;
-}
-
 .suggestions {
   border: 1px solid var(--color-tertiary);
   background-color: var(--color-primary);
+  color: var(--color-black);
+  font-size: 20px;
   list-style: none;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -79,26 +113,23 @@ img {
   z-index: 1; 
 }
 
-.city,
-.suggestions {
-  background-color: var(--color-primary);
-  z-index: 1;
-}
-
-label {
-  font-weight: 700;
+.city .suggestions {
+  position: absolute;
+  width: 100%;
+  margin-top: 0;
 }
 
 #event-list {
   display: grid;
   grid-template-columns: auto auto;
-  width: 100%;
-  padding: 1rem;
+  justify-self: center;
+  justify-content: stretch;
 }
 
 #event-list li {
   margin: 0 auto;
   text-align: left;
+  width: 100%;
 }
 
 .event {
@@ -110,19 +141,20 @@ label {
   border-radius: 5px;
   padding: 1rem;
   margin: 1rem;
+  width: 100%;
   list-style-type: none;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .eventSummary {
-  line-height: 1.2;
+  line-height: 1;
   font-size: calc(10px + 1vmin);
 }
 
 .eventSummary .location {
   margin-top: 3rem;
   font-size: calc(12px + 1vmin);
-  line-height: 1.3;
+  line-height: 0;
 }
 
 .details-btn {
@@ -133,8 +165,9 @@ label {
   border-radius: 5px;
   font-size: calc(10px + 1vmin);
   font-weight: 700;
-  background-color: rgb(255, 255, 255);
-  color: rgb(0, 0, 0);
+  background-color: rgb(8, 2, 118);
+  color: rgb(255, 255, 255);
+  border: none;
 }
 
 .event .details-btn {
@@ -151,7 +184,6 @@ label {
 
 @media screen and (min-width: 500px) {
   .App {
-    display: block;
     padding: 0;
     margin: 0 auto;
     max-width: 2024px;
@@ -172,7 +204,8 @@ label {
     grid-template-columns: 1fr 1fr;
     align-items: center;
     justify-content: center;
-    padding: 5rem;
+    padding: 1rem;
+    margin-bottom: 0.8rem;
   }
 
   h3 {
@@ -180,14 +213,23 @@ label {
   }
 
  #event-list {
-    grid-template-columns: auto;
-    gap: 1rem;
-    width: 60%;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 20px;
+    height: 100%;
+    padding: 0 3rem;
+    overflow: hidden;
+  }
+
+  #event-list li {
     margin: 0 auto;
+    text-align: left;
+    width: 90%;
   }
 
   #city-search, #numberOfevents{
     margin: 0 auto;
+    line-height: 1.2;
   }
 
   label {
@@ -195,17 +237,21 @@ label {
   }
 
   #city-label, .city {
+    display: flex;
+    flex-direction: column;
     margin-top: 0rem;
   }
+
 
   .city, .suggestions {
     position: relative;
     margin: 0 auto;
+    width: 100%;
   }
 
   .suggestions {
     position: absolute;
-    width: 440px;
+    width: 425px;
   }
 
   img {
@@ -214,9 +260,9 @@ label {
   }
 
   .event {
-    width: 100%;
+    width: 80%;
     padding: 1rem;
-    left: 0;
+    margin: 0;
   }
 
 }
@@ -294,19 +340,22 @@ label {
   .city, .suggestions {
     position: relative;
     margin: 0;
+    width: 100%;
   }
 
   .suggestions {
     position: absolute;
     z-index: 1;
-    width: 81%;  
+    width: 63%;  
   }
 
   #event-list {
     display: grid;
     grid-template-columns: 1fr;
-    grid-gap: 1rem;
+    gap: 1rem;
     padding: 1rem 0;
+    min-height: 100vh;
+    margin-bottom: 4rem;
   }
 
   #event-list li {

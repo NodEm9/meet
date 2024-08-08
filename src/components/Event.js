@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 
 const Event = ({ event }) => {
   const [showDetails, setShowDetails] = useState(false)
-  // const formattedDate = new Intl.DateTimeFormat('en-UK', {  dateStyle: 'full', timeStyle: 'long' }).format(new Date(event.start.dateTime))
   return (
     <li className='event'>
       <span className='eventSummary'>
