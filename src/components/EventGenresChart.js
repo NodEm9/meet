@@ -6,6 +6,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts'
 const EventGenresChart = ({ events }) => {
   const [data, setData] = useState([])
   const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'AngularJS'];
+  const colors = ['#8884d8', '#82ca9d', '#ffc658', '#ff7f00', '#ff7300'];
 
   useEffect(() => {
     setData(getData())
@@ -18,7 +19,7 @@ const EventGenresChart = ({ events }) => {
     })
     return data
   };
-
+  
   const renderCustomizedLabel = ({ cx, cy, midAngle, outerRadius, percent, index }) => {
     const RADIAN = Math.PI / 180;
     const radius = outerRadius;
@@ -28,7 +29,7 @@ const EventGenresChart = ({ events }) => {
       <text
         x={x}
         y={y}
-        fill="#8884d8"
+        fill={colors[index]}
         textAnchor={x > cx ? 'start' : 'end'}
         dominantBaseline="central"
       >
@@ -39,17 +40,20 @@ const EventGenresChart = ({ events }) => {
 
   return (
     <ResponsiveContainer width="99%" height={400}>
-    <PieChart>
-      <Pie
-        data={data}
-        dataKey="value" 
-        fill="#8884d8"
-        labelLine={false}
-        label={renderCustomizedLabel} 
-        outerRadius={130}           
+      <PieChart>
+        <Pie
+          data={data}
+          dataKey="value"
+          fill="#8884d8"
+          labelLine={false}
+          label={renderCustomizedLabel}
+          outerRadius={130}
+          {
+          ...data.map((entry, index) => <Cell key={`cell-${index}`} fill={colors[index % colors.length]} floodColor={entry} />)
+          }
         />
-    </PieChart>
-  </ResponsiveContainer>
+      </PieChart>
+    </ResponsiveContainer>
   )
 }
 
