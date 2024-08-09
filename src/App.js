@@ -59,7 +59,6 @@ const App = () => {
         setCurrentNOE={setCurrentNOE}
         setErrorAlert={setErrorAlert}
       />
-        {/* <img src={loca} alt='location' /> */}
         </section>
       <div className="charts-container">
         <EventGenresChart events={events} /> 

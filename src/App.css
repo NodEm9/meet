@@ -229,17 +229,19 @@ img {
 
   #city-search, #numberOfevents{
     margin: 0 auto;
-    line-height: 1.2;
-  }
-
-  label {
-    text-align: left;
+    line-height: 1.1;
   }
 
   #city-label, .city {
     display: flex;
     flex-direction: column;
     margin-top: 0rem;
+  }
+
+  #number {
+    width: 100%;
+    margin: 0 auto;
+    padding: 1rem;
   }
 
 
@@ -284,10 +286,15 @@ img {
     padding: 10px 5px;
     width: 100%;
   }
- 
-  h1 {
-    font-size: calc(36px + 2vmin); 
-    margin: 0;
+
+  .header {
+    flex-direction: column;
+    line-height: 1;
+    left: 0;
+  }
+  
+ h1 {
+    font-size: calc(48px + 2vmin);
     margin-top: 2rem;
   }
 
@@ -300,18 +307,20 @@ img {
 
   }
 
-  #number .number {
-    display: flex;
-    flex-direction: column;
+  #number  {
     width: 100%;
     left: 0;
-    margin-left: -0.8rem;
-    
+    font-size: 16px;
   }
 
   #numberOfevents {
     width: auto;
-    margin: 0 auto;
+    margin-left: -2rem;
+  }
+
+  .number {
+    width: 100%;
+    padding: 1rem;
   }
 
   #city-search {
@@ -322,19 +331,16 @@ img {
   #city-label {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    left: 0;
-  }
-  
-  #city-label
-   .city {
     width: auto;
-    padding: 1rem;
+    left: 0;
+    margin-left: -3.5rem;
+    font-size: 16px;
+    line-height: 1.4;
   }
   
-  img {
+   .city {
     width: 100%;
-    margin: 0 auto;
+    padding: 1rem;
   }
 
   .city, .suggestions {

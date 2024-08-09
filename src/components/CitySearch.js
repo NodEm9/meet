@@ -48,8 +48,7 @@ const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
         onChange={handleInputChanged}
         onInput={() => (
           query.length === 0 ? setShowSuggestions(false) : setShowSuggestions(true)
-        )}
-        
+        )}   
         />
         </label>
       {showSuggestions ? <ul className="suggestions">
